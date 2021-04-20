@@ -13,6 +13,7 @@ const app = express();
 //functions
 app.use('/public', express.static(__dirname + '/app/public'))
 app.use('/components', express.static(__dirname + '/app/components'))
+app.use('/data', express.static(__dirname + '/app/data'))
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/app/public/index.html");

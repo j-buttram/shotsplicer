@@ -1,0 +1,23 @@
+{
+  "name": "shotsplicer",
+  "version": "1.0.0",
+  "description": "Simple audio splicer for seperating audio file per auto detected high decibal peaks",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonButtram/ShotSplicer.git"
+  },
+  "author": "jbuttram",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JonButtram/ShotSplicer/issues"
+  },
+  "homepage": "https://github.com/JonButtram/ShotSplicer#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.2"
+  }
+}
