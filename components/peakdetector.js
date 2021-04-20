@@ -3,46 +3,16 @@ window.AudioContext = window.AudioContext ||
 window.webkitAudioContext;
 var audioContext = new AudioContext();
 
+//
  
-console.log("peak detector script running")
-
-function loadSound(url) {
-  var request = new XMLHttpRequest();
-  request.open('GET', url, true);
-  request.responseType = 'arraybuffer'; 
-
-  //decode async
-  request.onload = function() {
-    audioContext.decodeAudioData(request.response,
-      function(buffer) {
-        audio = buffer;
-        console.log("audio buffer is loaded")
-      }, onError);
-    }
-    request.send();
-}
+console.log("peakdetector.js running")
 
 //playback  
-object.onsubmit = function() {
-  
-  
-  function playback(buffer) {
+audiofile = function playback(buffer) {
     var source = audioContext.createBufferSource(); //creates a sound source
     source.buffer = buffer; //tell source what sound to play
     source.connect(context.destination); //source to the destination (speakers)
     source.start(0);
-
-
-  }
-}
-
-
-
-
-
-object.onsubmit = function(){
-  import submitFile from "/app.js"
-  console.log("submitted and file should be transferred to PeakDetector")
 }
 
 function getPeaksAtThreshold(data, threshold) {
