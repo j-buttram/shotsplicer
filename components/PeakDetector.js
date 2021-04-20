@@ -39,7 +39,6 @@ object.onsubmit = function() {
 
 
 
-//run playback on mouse button
 
 object.onsubmit = function(){
   import submitFile from "/app.js"
