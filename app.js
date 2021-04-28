@@ -3,11 +3,19 @@
 
 const express = require("express")
 const multer = require("multer") // Multer allows localhost file upload
-//const path = require("path")
-const upload = multer({
-    dest: './uploads/' //non-decoded audio file saved
-  }); 
-const app = express();
+const path = require("path")
+const fs = require("fs")
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads')
+  },   
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + '.mp3')}
+})
+
+const app = express();0
+var upload = multer({ storage: storage })
+const directory = path.join(__dirname, '../shotsplicer/uploads') //file upload directory
 
 
 app.use('/public', express.static(__dirname + '/public'))
@@ -18,17 +26,27 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
-//run load function onsubmit. *req.file is the uploaded mp3
-//! local file name MUST match attributal name in html
-app.post('/', upload.single('file-to-upload'), (req, res) => {
-  //!TODO fix the import file. pass the multer files name and import in the prepaudio.js for decoding and buffer
+//multer upload
+app.post('/uploads', upload.single('file-to-upload'), (req, res) => {
   console.log(req.file)
   console.log(res.file)
-
-
   res.redirect('/');
+
 });
 
 app.listen(3000, () => {
     console.log("Server is running on localhost3000 you goon")
+});
+
+//delete all files from folder on button click
+app.post('/cleanFolder', function(req, res) {
+  fs.readdir(directory, (err, files) => {
+    if(err) throw err;
+  
+    for (const file of files) {
+      fs.unlink(path.join(directory, file), err => {
+        if(err) throw err;
+      })
+    }
+  })
 });

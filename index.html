@@ -6,9 +6,14 @@
     
 </head>
   <body>
-    <form action="/" method="post" enctype="multipart/form-data" id="filesubmitform">
+    <form action="/uploads" method="post" enctype="multipart/form-data" id="filesubmitform">
       <input type="file" name="file-to-upload">
       <input type="submit" value="Upload">
+    </form>
+
+    
+    <form method="POST" action="/cleanFolder">
+      <input type="submit" value="Clear Folder" id="clearFolder">
     </form>
 
     <script type="text/javascript" src="components/prepaudio.js"></script> 

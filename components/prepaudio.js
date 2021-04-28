@@ -3,7 +3,9 @@ window.AudioContext = window.AudioContext ||
 window.webkitAudioContext;
 var audioContext = new AudioContext();
 
+
 const form = document.getElementById('filesubmitform');
+
 
 //1. load audio from express server. app.js loads the file to express folder /uploads
 //2. decode and buffer
