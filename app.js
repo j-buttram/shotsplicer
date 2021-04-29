@@ -21,15 +21,17 @@ const directory = path.join(__dirname, '../shotsplicer/uploads') //file upload d
 app.use('/public', express.static(__dirname + '/public'))
 app.use('/components', express.static(__dirname + '/components'))
 app.use('/data', express.static(__dirname + '/data'))
-
+app.use(express.json()); //enable for json data send
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html");
 });
 
 //multer upload
 app.post('/uploads', upload.single('file-to-upload'), (req, res) => {
-  console.log(req.file)
-  console.log(res.file)
+  console.log(req.file) 
+  var json = req.file.path; //path to send via JSON
+  res.send(json);    // echo the result back
+
   res.redirect('/');
 
 });

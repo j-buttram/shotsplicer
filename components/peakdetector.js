@@ -14,7 +14,7 @@ audiofile = function playback(buffer) {
     source.connect(context.destination); //source to the destination (speakers)
     source.start(0);
 }
-
+/*
 function getPeaksAtThreshold(data, threshold) {
   var peaksArray = [data];
   var length = data.length;
@@ -28,3 +28,4 @@ function getPeaksAtThreshold(data, threshold) {
   }
   return peaksArray;
 }
+*/
